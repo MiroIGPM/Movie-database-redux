@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import * as actions from "../reducers/actions";
 
  class Moviecard extends Component {
     // Creating data and puting API data into the state
@@ -9,17 +11,19 @@ import React, { Component } from 'react'
         }
     }
 
-    componentWillMount(){
-        fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=de9d1a4d941ba120c64cd7c510e686b2&language=en-US&page=1') 
-        .then(res => res.json())
-        .then(data => this.setState({posts: data.results}))  // data into posts empty array
+    componentDidMount(){  // data into posts empty array
+        this.props.fetchItems();
     }
 
     render() {
+        const {poster}=this.props;
+        console.log('props', this.props)
+        console.log('propsitems', this.props.items)
+
         // creating const with title data and relase year from fetch API
-        const postItems = this.state.posts.map(post =>(
-            <div className="card" key={post.id}>
-                <img src={`http://image.tmdb.org/t/p/w185//${post.poster_path}`}></img>
+        const postItems = this.props.items.map(post =>(
+            <div className={poster? "card" : "table__row"} key={post.id}>
+                {(poster && post.poster_path) && <img src={`http://image.tmdb.org/t/p/w185//${post.poster_path}`}></img>}
                 <p>{post.original_title}</p>
                 <p>{post.release_date}</p>
             </div>
@@ -29,7 +33,7 @@ import React, { Component } from 'react'
             <div>
                 <h1>Movies-card view</h1>
                 <div className="container">    
-                    <div className="cardsHolder">
+                    <div className={poster? "cardsHolder" : "table"}>
                         
                             {postItems}
                             
@@ -40,4 +44,21 @@ import React, { Component } from 'react'
     }
 }
 
-export default Moviecard;
+
+const mapStateToProps = state => {
+    console.log('state', state)
+    return {
+      items: state.posts.items
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      fetchItems: () => {
+        dispatch(actions.fetchItems());
+      }
+    };
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Moviecard);
+
