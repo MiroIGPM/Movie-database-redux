@@ -8,11 +8,16 @@ import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Header from './components/Header';
 // import Movietable from './components/Moviestable';
 import Moviecard from './components/Moviecard';
+import Pages from './components/Pages';
 
 import store from './components/store';
 
 
+
+
 function App() {
+
+
   const CardWithPoster = () => {
     return <Moviecard poster />
   }
@@ -24,6 +29,7 @@ function App() {
           <Route path="/Movietable" component={Moviecard} />            
           <Route path="/Moviecard" component={CardWithPoster} />                                          
         </div>
+        <Pages />
         <Redirect from="/" to="Movietable" />
       </Router>
     </Provider>  

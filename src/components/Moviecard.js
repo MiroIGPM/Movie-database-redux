@@ -11,19 +11,19 @@ import * as actions from "../reducers/actions";
         }
     }
 
-    componentDidMount(){  // data into posts empty array
+    componentDidMount(){  
         this.props.fetchItems();
     }
 
     render() {
         const {poster}=this.props;
-        console.log('props', this.props)
-        console.log('propsitems', this.props.items)
+        // console.log('props', this.props)
+        // console.log('propsitems', this.props.items)
 
         // creating const with title data and relase year from fetch API
         const postItems = this.props.items.map(post =>(
             <div className={poster? "card" : "table__row"} key={post.id}>
-                {(poster && post.poster_path) && <img src={`http://image.tmdb.org/t/p/w185//${post.poster_path}`}></img>}
+                {(poster && post.poster_path) && <img src={`http://image.tmdb.org/t/p/w185//${post.poster_path}`} alt="Movie poster"></img>}
                 <p>{post.original_title}</p>
                 <p>{post.release_date}</p>
             </div>
@@ -31,7 +31,7 @@ import * as actions from "../reducers/actions";
        
         return (
             <div>
-                <h1>Movies-card view</h1>
+               
                 <div className="container">    
                     <div className={poster? "cardsHolder" : "table"}>
                         
