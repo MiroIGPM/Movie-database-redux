@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
  class Header extends Component {
     render() {
         return (
-            <header>
-            <h1>Movies - database</h1>
-            <Link to="/Movietable">Table view</Link> | <Link to="/Moviecard">Card view</Link>
-        </header>
+            <header className="header">
+                <h1>Movies - database</h1>
+                <div className="header__links"> 
+                    <Link to="/Movietable">Table view</Link> | <Link to="/Moviecard">Card view</Link>
+                </div>    
+            </header>
         )
     }
 }

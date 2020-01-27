@@ -3,7 +3,7 @@
 //item - single movie that we put when we get a response
 const initialState = {
     items: [],
-    item: {}, 
+    item: {},
     page: 1 
 }
 
@@ -16,12 +16,11 @@ export default function(state = initialState, action){
              return {...state, items: action.payload}
          case "FETCH_FAILURE":
              return {...state, error:action.payload.error}
-         case "CHANGE_PAGE":
-             return {...state, page:action.payload}       
+        case "CHANGE_PAGE":
+             return {...state, page: action.payload }            
          default: 
             return state
      }
 }
 
 
-export {initialState}

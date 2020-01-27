@@ -1,24 +1,39 @@
 import React, { Component } from 'react'
-import * as actions from "../reducers/actions";
+import {changePage, fetchItems} from "../reducers/actions"
 import { connect } from 'react-redux';
 
 
  class Pages extends Component {
+    
+
+     getPageNumber = e =>{
+         console.log(e.target.textContent)
+        this.props.changePage(e.target.textContent)
+        this.fetchPage()  
+    }
+
+    fetchPage = () =>{
+        this.props.fetchItems(this.props.page);
+    }
     render() {
+            
+
         return (
-            <div>
-                <li onClick={() => this.props.changePage()}>2</li>
+            <div className="container">
+                <ul className="pagination">
+                    <li className="pagination__number" onClick={this.getPageNumber}>1</li>
+                    <li className="pagination__number" onClick={this.getPageNumber}>2</li>
+                    <li className="pagination__number" onClick={this.getPageNumber}>3</li>
+                    <li className="pagination__number" onClick={this.getPageNumber}>4</li>
+                    <li className="pagination__number" onClick={this.getPageNumber}>5</li>
+                </ul>
             </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        changePage: () => {
-        dispatch(actions.changePage());
-      }
-    };
-  };
+    const mapStateToProps = state => ({
+        page: state.posts.page
+    })
 
-export default connect(null, mapDispatchToProps)(Pages);
+export default connect(mapStateToProps, {changePage, fetchItems})(Pages);
