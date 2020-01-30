@@ -69,7 +69,7 @@ a{
 
 .card{
   width: 100%;
-  max-width: 185px;
+  max-width: 250px;
   position: relative;
   margin: 25px;
   border-radius: 5px;
@@ -88,6 +88,21 @@ a{
   color: #fff;
   background-color: #0f3a58;
   margin-top: -7px;
+  text-align: center;
+  z-index: 999999;
+}
+
+.card__link{
+  width: 100%;
+  background-color: #0f3a58;
+  padding: 10px 0 20px 0;
+  text-align: center;
+}
+
+.card__link a{
+  background-color: lightseagreen;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .card:after {
@@ -100,7 +115,8 @@ a{
   background-color: rgba(255,255,255,0.4);
 	-webkit-transition: none;
 	   -moz-transition: none;
-	        transition: none;
+          transition: none;
+  pointer-events: none;
 }
 
 .card:hover:after {

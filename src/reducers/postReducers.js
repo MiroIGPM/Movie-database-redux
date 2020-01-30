@@ -4,7 +4,8 @@
 const initialState = {
     items: [],
     item: {},
-    page: 1 
+    page: 1,
+    id: "" 
 }
 
 
@@ -17,7 +18,11 @@ export default function(state = initialState, action){
          case "FETCH_FAILURE":
              return {...state, error:action.payload.error}
         case "CHANGE_PAGE":
-             return {...state, page: action.payload }            
+             return {...state, page: action.payload }
+        case "CHANGE_ID":
+            return{...state, id: action.payload}     
+        case "GET_MOVIE":
+            return {...state, item: action.payload}                 
          default: 
             return state
      }

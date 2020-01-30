@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import * as actions from "../reducers/actions";
+// import * as actions from "../reducers/actions";
+import {changeId} from "../reducers/actions";
+
+import { Link } from 'react-router-dom';
+
+
+import Pages from './Pages';
 
 
  class Moviecard extends Component {
-   
-    constructor(props){
-        super(props);
-        this.state = {
-            posts: []
-        }
-    }
-
-    componentDidMount(){  
-        this.props.fetchItems();
-    }
+    
+  getId = e =>{
+    this.props.changeId(e.target.parentNode.getAttribute("id"))
+    console.log(e.target.parentNode.parentNode.getAttribute("id"))
+}
 
     render() {
         const {poster}=this.props;
@@ -22,26 +22,32 @@ import * as actions from "../reducers/actions";
 
        
         const postItems = this.props.items.map(post =>(
-            <div className={poster? "card" : "table__row"} key={post.id}>
-                {(poster && post.poster_path) && <img className="card__img" src={`http://image.tmdb.org/t/p/w185//${post.poster_path}`} alt="Movie poster"></img>}
+            <div className={poster? "card" : "table__row"} key={post.id} id={post.id}>
+                {(poster && post.poster_path) && <img className="card__img" src={`http://image.tmdb.org/t/p/w342//${post.poster_path}`} alt="Movie poster"></img>}
                 <p className={poster? "card__text" : "table__text"}>{post.title}</p>
                 <p className={poster? "card__text" : "table__text"}>{post.release_date}</p>
+                {(poster) && <div onClick={this.getId} className="card__link">
+                   <Link  to="/SingleMovie">View Detalis</Link>
+                </div>}
             </div>
         ));
        
         return (
-            <div className="main">
-               
-                <div className="container">    
-                    <div className={poster? "cardsHolder" : "table"}>
-                        
-                            {postItems}
+            <React.Fragment>    
+                <div className="main">
+                
+                    <div className="container">    
+                        <div className={poster? "cardsHolder" : "table"}>
                             
+                                {postItems}
+                                
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
-            
+                <Pages />
+            </React.Fragment>
                 
             
         );
@@ -52,17 +58,11 @@ import * as actions from "../reducers/actions";
 const mapStateToProps = state => {
     
     return {
-      items: state.posts.items
+      items: state.posts.items,
     };
   };
   
-  const mapDispatchToProps = dispatch => {
-    return {
-      fetchItems: () => {
-        dispatch(actions.fetchItems());
-      }
-    };
-  };
+ 
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Moviecard);
+  export default connect(mapStateToProps, {changeId} )(Moviecard);
 

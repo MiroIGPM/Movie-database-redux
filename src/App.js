@@ -8,9 +8,10 @@ import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Header from './components/Header';
 // import Movietable from './components/Moviestable';
 import Moviecard from './components/Moviecard';
-import Pages from './components/Pages';
+
 
 import store from './components/store';
+import SingleMovie from './components/SingleMovie';
 
 
 
@@ -27,10 +28,11 @@ function App() {
         <div className="App">
           <Header />
           <Route path="/Movietable" component={Moviecard} />            
-          <Route path="/Moviecard" component={CardWithPoster} />                                          
+          <Route path="/Moviecard" component={CardWithPoster} />
+          <Route path="/SingleMovie" component={SingleMovie} />                                     
         </div>
-        <Pages />
-        <Redirect from="/" to="Movietable" />
+        
+        <Redirect from="/" to="Movietable"/>
       </Router>
     </Provider>  
   );
