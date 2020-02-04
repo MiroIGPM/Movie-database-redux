@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import {changePage, fetchItems, fetchItem} from "../reducers/actions"
+import {changePage, fetchItems} from "../reducers/actions"
 import { connect } from 'react-redux';
 
-
- class Pages extends Component {
+class Pages extends Component {
     
     componentDidMount(){  
-        this.props.fetchItems(this.props.page);
-        this.props.fetchItem()
+        this.props.fetchItems(this.props.page);        
     }
 
      getPageNumber = e =>{
@@ -18,10 +16,7 @@ import { connect } from 'react-redux';
         this.props.fetchItems(this.props.page)
     }
 
-
-    render() {
-            
-
+    render() {            
         return (
             <div className="container">
                 <ul className="pagination">
@@ -40,4 +35,4 @@ import { connect } from 'react-redux';
         page: state.posts.page
     })
 
-export default connect(mapStateToProps, {changePage, fetchItems, fetchItem})(Pages);
+export default connect(mapStateToProps, {changePage, fetchItems})(Pages);

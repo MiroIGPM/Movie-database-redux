@@ -103,6 +103,9 @@ a{
   background-color: lightseagreen;
   padding: 10px 20px;
   border-radius: 5px;
+  -webkit-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
 }
 
 .card:after {
@@ -138,7 +141,8 @@ a{
 
 .pagination__number{
   padding: 5px 10px;
-  border: 1px solid black;
+  border: 1px solid lightgray;
+  color: lightgray;
   font-size: 20px;
   margin: 5px;
   border-radius: 5px;
@@ -148,6 +152,96 @@ a{
   cursor: pointer;
   background: lightsteelblue;
   color: #fff;
-  background-color: #0f3a58;
+  background-color: lightseagreen;
   
+}
+
+
+/* single movie component css */
+
+.holder{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 5% auto;
+}
+
+.movie{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+
+.movie__image{
+  margin: 0 auto;
+  
+  
+}
+
+.movie__image img{
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+}
+
+.movie__description{
+  max-width: 700px;
+}
+
+.table--wide{
+  margin: 25px 0;  
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.table__row--left{
+  justify-content: start;
+  border-top: none;
+}
+
+.movie__span{
+  margin-right: 5px;
+  color: #000000;
+  font-weight: 700;
+}
+
+.movie__misc{
+  margin-bottom: 25px;
+}
+
+.movie__misc h4{
+  margin-bottom: 15px;
+}
+
+.movie__misc p{
+  margin-top: 4px;
+}
+
+.misc__link{
+  color: #0645AD;
+}
+
+.misc__link:hover{
+  cursor: pointer;
+}
+
+.movie__link{
+  background-color: lightseagreen;
+  padding: 8px 30px;
+  font-size: 22px;
+  border-radius: 5px;
+  margin-top: 20px;
+  -webkit-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+  transition: all ease-in 0.5s;
+}
+
+.movie__link:hover{
+  cursor: pointer;
 }

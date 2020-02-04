@@ -1,68 +1,52 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import * as actions from "../reducers/actions";
-import {changeId} from "../reducers/actions";
-
 import { Link } from 'react-router-dom';
-
-
 import Pages from './Pages';
+import Pagination from './Pagination'
 
-
- class Moviecard extends Component {
-    
-  getId = e =>{
-    this.props.changeId(e.target.parentNode.getAttribute("id"))
-    console.log(e.target.parentNode.parentNode.getAttribute("id"))
-}
+class Moviecard extends Component {
 
     render() {
-        const {poster}=this.props;
-      
 
-       
+
+        const {poster}=this.props;            
         const postItems = this.props.items.map(post =>(
             <div className={poster? "card" : "table__row"} key={post.id} id={post.id}>
                 {(poster && post.poster_path) && <img className="card__img" src={`http://image.tmdb.org/t/p/w342//${post.poster_path}`} alt="Movie poster"></img>}
                 <p className={poster? "card__text" : "table__text"}>{post.title}</p>
                 <p className={poster? "card__text" : "table__text"}>{post.release_date}</p>
-                {(poster) && <div onClick={this.getId} className="card__link">
-                   <Link  to="/SingleMovie">View Detalis</Link>
+                {(poster) && <div className="card__link">
+                   <Link to={"/SingleMovie/" + post.id}>View Detalis</Link>
                 </div>}
             </div>
         ));
        
+        const totalPages = 344
+
         return (
             <React.Fragment>    
                 <div className="main">
                 
                     <div className="container">    
-                        <div className={poster? "cardsHolder" : "table"}>
-                            
-                                {postItems}
-                                
+                        <div className={poster? "cardsHolder" : "table"}>                            
+                                {postItems}                                
                         </div>
                     </div>
-
                 </div>
-
                 <Pages />
-            </React.Fragment>
-                
-            
+                <Pagination pages={totalPages} currentPage={this.props.page}/>
+            </React.Fragment>            
         );
     }
 };
 
-
-const mapStateToProps = state => {
-    
+const mapStateToProps = state => {    
     return {
       items: state.posts.items,
+      id: state.posts.id,
+      page: state.posts.page
     };
   };
   
- 
-  
-  export default connect(mapStateToProps, {changeId} )(Moviecard);
+export default connect(mapStateToProps)(Moviecard);
 
