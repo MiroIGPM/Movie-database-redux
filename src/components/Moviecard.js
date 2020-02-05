@@ -21,20 +21,20 @@ class Moviecard extends Component {
             </div>
         ));
        
-        const totalPages = 344
+        const totalPages = 343
 
         return (
             <React.Fragment>    
                 <div className="main">
                 
-                    <div className="container">    
+                    <div className="contain">    
                         <div className={poster? "cardsHolder" : "table"}>                            
                                 {postItems}                                
                         </div>
                     </div>
                 </div>
                 <Pages />
-                <Pagination pages={totalPages} currentPage={this.props.page}/>
+                <Pagination pages={totalPages} currentPage={this.props.page}  />
             </React.Fragment>            
         );
     }

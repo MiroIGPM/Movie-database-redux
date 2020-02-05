@@ -16,10 +16,11 @@ class Pages extends Component {
         this.props.fetchItems(this.props.page)
     }
 
+
     render() {            
         return (
             <div className="container">
-                <ul className="pagination">
+                <ul className="pagination is-centered">
                     <li className="pagination__number" onClick={this.getPageNumber}>1</li>
                     <li className="pagination__number" onClick={this.getPageNumber}>2</li>
                     <li className="pagination__number" onClick={this.getPageNumber}>3</li>

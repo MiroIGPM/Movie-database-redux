@@ -31,7 +31,7 @@ const fetchItem = (id) => dispatch => {
    const changePage = pageNumber => dispatch => {
       dispatch({
         type: CHANGE_PAGE,
-        payload: pageNumber
+        payload: parseInt(pageNumber)
       })
   }
 
