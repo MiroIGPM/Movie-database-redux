@@ -1,14 +1,8 @@
-
-//items - movies that come from action  (fetch request is gonna be put in action)
-//item - single movie that we put when we get a response
 const initialState = {
     items: [],
     item: {},
-    page: 1,
-    id: "" 
+    page: 1
 }
-
-
 
 // function evaluates the type 
 export default function(state = initialState, action){
@@ -18,9 +12,7 @@ export default function(state = initialState, action){
          case "FETCH_FAILURE":
              return {...state, error:action.payload.error}
         case "CHANGE_PAGE":
-             return {...state, page: action.payload }
-        case "CHANGE_ID":
-            return{...state, id: action.payload}     
+             return {...state, page: action.payload }    
         case "GET_MOVIE":
             return {...state, item: action.payload}                 
          default: 

@@ -1,6 +1,4 @@
-import { FETCH_SUCCES, FETCH_FAILURE, CHANGE_PAGE, GET_MOVIE, CHANGE_ID } from "../actions/types";
-
-
+import { FETCH_SUCCES, FETCH_FAILURE, CHANGE_PAGE, GET_MOVIE } from "../actions/types";
 
 const apiKey = "api_key=de9d1a4d941ba120c64cd7c510e686b2";
 
@@ -20,7 +18,6 @@ const fetchItem = (id) => dispatch => {
   }).catch(error => dispatch(fetchItemsFailure(error)))
 }
 
-
   const fetchItemsSucces = items => ({
     type: FETCH_SUCCES,
     payload: [...items]
@@ -31,19 +28,11 @@ const fetchItem = (id) => dispatch => {
     payload: {error}
   });
 
- 
-  const changePage = pageNumber => dispatch => {
+   const changePage = pageNumber => dispatch => {
       dispatch({
         type: CHANGE_PAGE,
-        payload: pageNumber
+        payload: parseInt(pageNumber)
       })
-  }
-
-  const changeId = id => dispatch =>{
-    dispatch({
-      type: CHANGE_ID,
-      payload: id
-    })
   }
 
   const getMovie = item => ({
@@ -53,5 +42,5 @@ const fetchItem = (id) => dispatch => {
 
 
 
-  export { fetchItems, changePage, fetchItem, changeId }
+  export { fetchItems, changePage, fetchItem }
 
