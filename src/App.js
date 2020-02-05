@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './App.sass';
 import { Provider } from 'react-redux';
 import { HashRouter as Router, Route} from "react-router-dom";
 import Header from './components/Header';

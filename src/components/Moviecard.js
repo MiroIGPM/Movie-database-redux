@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-// import Pages from './Pages';
 import Pagination from './Pagination';
-
 
 class Moviecard extends Component {
 
     render() {
-
 
         const {poster}=this.props;            
         const postItems = this.props.items.map(post =>(
@@ -22,8 +19,6 @@ class Moviecard extends Component {
             </div>
         ));
        
-        // const totalPages = 343
-
         return (
             <React.Fragment>    
                 <div className="main">
@@ -34,8 +29,7 @@ class Moviecard extends Component {
                         </div>
                     </div>
                 </div>
-                <Pagination />
-                
+                <Pagination />      
             </React.Fragment>            
         );
     }

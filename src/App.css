@@ -287,6 +287,10 @@ a{
     margin: 30px auto 0 auto;
     text-align: center;
 }
+
+  .table--left{
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 759px){
