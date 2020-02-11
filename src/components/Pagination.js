@@ -17,23 +17,20 @@ class Pagination extends Component {
     }
 
     render() {
-        const total = 344
+        const total = 20
         const currentPage = this.props.page
-        const pageLinks = []
-        
-            for(let i=currentPage + 1; i<=currentPage + 4; i++){
-                let active = currentPage == i ? 'active' : '';
-                pageLinks.push(<li onClick={this.getPageNumber} className={`pagination__number ${active}`} key={i}>{i}</li>)
-            }        
+            
         return (
             <div>                
                 <nav className="pagination is-centered is-mobile" role="navigation" aria-label="pagination">
                     <ul className="pagination__list">
-                        <li className="pagination__number" onClick={this.getPageNumber}>1</li>
-                        <li><span className="pagination__ellipsis">&hellip;</span></li> 
-                        {pageLinks}   
-                        <li><span className="pagination__ellipsis">&hellip;</span></li>
-                        <li className="pagination__number" onClick={this.getPageNumber}>{total}</li>
+                        {currentPage > 1 ? <li className="pagination__number" onClick={() => this.props.changePage(currentPage - 1)}>-</li> : ""}
+                        { currentPage > 2 ? <li className="pagination__number pagination__number--none" onClick={this.getPageNumber}>{currentPage - 2}</li> : ""}
+                        {currentPage > 1 ? <li className="pagination__number pagination__number--none" onClick={this.getPageNumber}>{currentPage - 1}</li> : ""}
+                        <li className="pagination__number pagination__number--active" onClick={this.getPageNumber}>{currentPage}</li>
+                        {currentPage === total ? "" : <li className="pagination__number pagination__number--none" onClick={this.getPageNumber}>{currentPage + 1}</li>}
+                        { currentPage === total - 1  || currentPage === total ? "" : <li className="pagination__number pagination__number--none" onClick={this.getPageNumber}>{currentPage + 2}</li>}
+                        {currentPage !== total ? <li className="pagination__number" onClick={() => this.props.changePage(currentPage + 1)}>+</li> : "" }
                     </ul>
                 </nav>
             </div>

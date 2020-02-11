@@ -1,15 +1,11 @@
 import React from 'react';
 import './App.css';
-import './App.sass';
 import { Provider } from 'react-redux';
-import { HashRouter as Router, Route} from "react-router-dom";
+import { HashRouter as Router, Route, Redirect} from "react-router-dom";
 import Header from './components/Header';
 import Moviecard from './components/Moviecard';
 import store from './components/store';
 import SingleMovie from './components/SingleMovie';
-
-
-
 
 function App() {
   const CardWithPoster = () => {
@@ -24,6 +20,7 @@ function App() {
           <Route path="/Moviecard" component={CardWithPoster} />
           <Route path="/SingleMovie/:id" component={SingleMovie} />                                     
         </div>
+        <Redirect from="/" to="Movietable" />
       </Router>
     </Provider>  
   );

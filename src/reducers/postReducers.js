@@ -14,7 +14,9 @@ export default function(state = initialState, action){
         case "CHANGE_PAGE":
              return {...state, page: action.payload }    
         case "GET_MOVIE":
-            return {...state, item: action.payload}                 
+            return {...state, item: action.payload}         
+        case "SORT":
+            return{...state, items: action.payload}        
          default: 
             return state
      }

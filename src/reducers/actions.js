@@ -1,9 +1,9 @@
-import { FETCH_SUCCES, FETCH_FAILURE, CHANGE_PAGE, GET_MOVIE } from "../actions/types";
+import { FETCH_SUCCES, FETCH_FAILURE, CHANGE_PAGE, GET_MOVIE, SORT } from "../actions/types";
 
 const apiKey = "api_key=de9d1a4d941ba120c64cd7c510e686b2";
 
 const fetchItems = (page = 1) => dispatch => { 
-    fetch(`https://api.themoviedb.org/3/movie/top_rated?${apiKey}&language=en-US&page=${page}`) 
+    fetch(`https://api.themoviedb.org/3/movie/now_playing?${apiKey}&language=en-US&page=${page}`) 
     .then(res => res.json())
     .then(data => {
       dispatch(fetchItemsSucces(data.results))
@@ -41,6 +41,12 @@ const fetchItem = (id) => dispatch => {
   })
 
 
+  const sort = items =>({
+    type: SORT,
+    payload: [...items]
+  })
 
-  export { fetchItems, changePage, fetchItem }
+
+
+  export { fetchItems, changePage, fetchItem, sort }
 
