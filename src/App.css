@@ -304,6 +304,10 @@ a{
   border-top: none;
 }
 
+.table__row--initial{
+  align-items: initial;
+}
+
 .movie__span{
   margin-right: 5px;
   color: #000000;

@@ -23,7 +23,7 @@ import {Link} from 'react-router-dom'
                             <h1 className="title">{this.props.item.title}</h1>
                             <h4 className="subtitle"><span>Original title:</span> {item.original_title}</h4>
                             <div className="table--wide table--left">
-                                <p className="table__row table__row--left"><span className="movie__span">Overview:</span> {item.overview}</p>
+                                <p className="table__row table__row--left table__row--initial"><span className="movie__span">Overview:</span> {item.overview}</p>
                                 <p className="table__row table__row--left"><span className="movie__span">Release date:</span> {item.release_date}</p>
                                 <p className="table__row table__row--left"><span className="movie__span">Rating:</span> {item.vote_average}</p>
                             </div>

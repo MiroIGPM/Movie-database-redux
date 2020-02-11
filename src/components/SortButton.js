@@ -10,7 +10,6 @@ class SortButton extends Component {
             showMenu: false,
             order: true,
             isActive: ""
-
         }
 
         this.showMenu = this.showMenu.bind(this)
@@ -57,13 +56,13 @@ class SortButton extends Component {
             </div>
             
             {
-              this.state.showMenu
+              this.state.showMenu 
                 ? (
                   <div className="sort__menu">
-                    <div className={this.state.isActive === "Title ↓↑" && "menu__div--active"} onClick={(e) => sort(e, "title", this.state.order)}> <p className="menu__text">Title ↓↑</p> </div>
-                    <div className={this.state.isActive === "Year ↓↑" && "menu__div--active"} onClick={(e) => sort(e, "release_date", this.state.order)}> <p className="menu__text">Year ↓↑</p> </div>
-                    <div className={this.state.isActive === "Rating ↓↑" && "menu__div--active"} onClick={(e) => sort(e, "vote_average", this.state.order)}> <p className="menu__text">Rating ↓↑</p> </div>
-                    <div className={this.state.isActive === "Popularity ↓↑" && "menu__div--active"} onClick={(e) => sort(e, "popularity", this.state.order)}> <p className="menu__text">Popularity ↓↑</p> </div>
+                    <div className={this.state.isActive === "Title ↓↑" ? "menu__div--active" : ""} onClick={(e) => sort(e, "title", this.state.order)}> <p className="menu__text">Title ↓↑</p> </div>
+                    <div className={this.state.isActive === "Year ↓↑" ? "menu__div--active" : ""} onClick={(e) => sort(e, "release_date", this.state.order)}> <p className="menu__text">Year ↓↑</p> </div>
+                    <div className={this.state.isActive === "Rating ↓↑" ? "menu__div--active" : ""} onClick={(e) => sort(e, "vote_average", this.state.order)}> <p className="menu__text">Rating ↓↑</p> </div>
+                    <div className={this.state.isActive === "Popularity ↓↑" ? "menu__div--active" : ""} onClick={(e) => sort(e, "popularity", this.state.order)}> <p className="menu__text">Popularity ↓↑</p> </div>
                   </div>
                 )
                 : (
